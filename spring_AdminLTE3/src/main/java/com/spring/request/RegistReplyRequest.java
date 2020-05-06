@@ -39,5 +39,11 @@ public class RegistReplyRequest {
 		
 		return reply;
 	}
+	@Override
+	public String toString() {
+		return "RegistReplyRequest [bno=" + bno + ", replyer=" + replyer + ", replytext=" + replytext + "]";
+	}
+	
+	
 	
 }
