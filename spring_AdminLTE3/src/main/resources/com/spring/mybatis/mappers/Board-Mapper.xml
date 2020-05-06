@@ -38,6 +38,34 @@
 		</if>
 	</sql>
 	
+	<select id="selectBoardCriteria"
+			parameterType="cri" 
+			resultType="board">
+		SELECT * 
+		FROM board
+		WHERE bno IS NOT NULL
+		<include refid="search" />
+		ORDER BY regdate DESC
+	</select>
+	
+	<select id="selectBoardCriteriaTotalCount"
+			parameterType="cri" 
+			resultType="int">
+		SELECT
+		COUNT(*) 
+		FROM board
+		WHERE bno IS NOT NULL
+		<include refid="search" />
+		ORDER BY regdate DESC
+	</select>
+	
+	<select id="selectBoardByBno"  resultType="board">
+		select * 
+		from board 
+		where bno=#{bno}
+	</select>
+	
+	
 	<select id="selectSearchBoardList" 
 			parameterType="cri" 
 			resultType="board">
@@ -62,20 +90,13 @@
 		order by regdate desc
 	</select>
 	
-	
-	
 	<select id="selectBoardList" resultType="board">
 		select * 
 		from board 
 		order by bno desc		
 	</select>
 	
-	<select id="selectBoardByBno"  resultType="board">
-		select * 
-		from board 
-		where bno=#{bno}
-	</select>
-	
+
 	<update id="insertBoard" parameterType="board">
 		insert 
 		into 
@@ -105,10 +126,18 @@
 		viewcnt=viewcnt+1 
 		where bno=#{bno}
 	</update>
+		<update id="modifyViewCntForModify" parameterType="int">
+		UPDATE board
+		SET
+		viewcnt = viewcnt -1
+		WHERE bno = #{bno}
+	</update>
 	
 	<select id="selectBoardSeqNext" resultType="int">
 		select board_seq.nextval as bno from dual
 	</select>
+	
+
 </mapper>
 
 

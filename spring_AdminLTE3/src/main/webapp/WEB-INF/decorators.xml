@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<decorators defaultdir="/WEB-INF/views/decorators">	
+<!-- one depth는 *	모든 경로는 ** -->
+<!-- 마지막으로 갈수록 부분으로 작성한다. -->
+	<decorator name="main" page="main_decorator.jsp">
+		<pattern>/*</pattern>			
+	</decorator>
+	
+	<decorator name="open_window" page="open_decorator.jsp">
+		<pattern>/**/regist*</pattern>			
+		<pattern>/**/modify*</pattern>			
+		<pattern>/**/detail*</pattern>		
+	</decorator>
+
+		
+	<excludes>
+		<pattern>/replies/**</pattern>
+		<pattern>/commons/login*.do</pattern>
+		<pattern>/*.jsp</pattern>
+		<pattern>/resources/**</pattern>
+	</excludes>
+</decorators>

@@ -54,8 +54,7 @@ public class TestSqlSession {
 		int limit = cri.getPerPageNum();
 		RowBounds rowBounds = new RowBounds(offset,limit);
 		
-		List<MemberVO> memberList = 
-				session.selectList("Member-Mapper.selectSearchMemberList",cri,rowBounds);
+		List<MemberVO> memberList = session.selectList("Member-Mapper.selectSearchMemberList",cri,rowBounds);
 		
 		Assert.assertEquals(1, memberList.size());
 		

@@ -27,8 +27,7 @@ public class ReplyServiceImpl implements ReplyService{
 	public Map<String, Object> getReplyList(int bno, SearchCriteria cri) throws SQLException {
 		Map<String,Object> dataMap=new HashMap<String,Object>();
 		
-		List<ReplyVO> replyList=
-				replyDAO.selectReplyListPage(bno, cri);
+		List<ReplyVO> replyList = replyDAO.selectReplyListPage(bno, cri);
 		
 		int count = replyDAO.countReply(bno);
 		
