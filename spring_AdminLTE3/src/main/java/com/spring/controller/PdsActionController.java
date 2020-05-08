@@ -18,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.utils.CreatePageMaker;
+import com.spring.utils.MakeFileName;
 import com.spring.dto.AttachVO;
 import com.spring.dto.MemberVO;
 import com.spring.dto.PdsVO;
+import com.spring.request.PageMaker;
 import com.spring.request.RegistPdsRequest;
 import com.spring.request.SearchCriteria;
 import com.spring.service.PdsService;
@@ -90,6 +93,32 @@ public class PdsActionController {
 
 		return mnv;
 	}
+	
+	//hh.joo 20200508 
+	@RequestMapping("modify.do")
+	public String modify(int pno, 
+						RegistPdsRequest registReq, 
+						HttpServletRequest request,
+						HttpServletResponse response) throws Exception {
+		String url = "pds/modify_success";
+		
+		try {
+			PdsVO pds = pdsService.read(pno);
+			List<AttachVO> renamedAttachList = MakeFileName.parseFileNameFromAttaches(pds.getAttachList(), "\\$\\$");
+			pds.setAttachList(renamedAttachList);
+			
+			PageMaker pageMaker = CreatePageMaker.make(request);
+			
+			request.setAttribute("pds", pds);
+			request.setAttribute("pageMaker", pageMaker);
+		} catch (Exception e) {
+			e.printStackTrace();
+			url = "error/500_error";
+		}
+		
+		return url;
+	}
+	
 	
 	@RequestMapping("detail.do")
 	public ModelAndView detail(ModelAndView mnv, int pno) throws Exception {
