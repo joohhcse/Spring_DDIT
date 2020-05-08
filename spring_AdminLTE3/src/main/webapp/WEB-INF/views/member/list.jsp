@@ -40,7 +40,7 @@
     	  	<div class="card-header with-border">
     	  		<c:if test="${loginUser.authority eq 'ROLE_ADMIN' }" >
     	  			<button type="button" class="btn btn-primary" 
-    	  			onclick="OpenWindow('registForm.do','회원등록',800,600);" >회원등록</button>
+    	  			onclick="OpenWindow('registForm.do','회원등록',800,1000);" >회원등록</button>
     	  		</c:if>
     	  		<div id="keyword" class="card-tools" style="width:350px;">
 				  <div class="input-group row">		
@@ -77,7 +77,7 @@
 	             		<c:if test="${!empty memberList }">
 	             			<c:forEach var="member" items="${memberList }">	             			
 	             		         <tr>
-	             					<td><a href="javascript:OpenWindow('/member/detail?id=${member.id }','회원상세보기','600','500');" >${member.id }</a></td>
+	             					<td><a href="javascript:OpenWindow('/member/detail?id=${member.id }','회원상세보기','900','1000');" >${member.id }</a></td>
 	             					<td>${member.name }</td>
 	             					<td>${member.pwd }</td>
 	             					<td>${member.email }</td>

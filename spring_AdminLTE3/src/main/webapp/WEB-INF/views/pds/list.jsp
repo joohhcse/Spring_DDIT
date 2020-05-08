@@ -17,7 +17,7 @@
 </head>	
 	
 <body>
-  <c:set var="pageMaker" value="${dataMap.pageMaker }" />	  	
+<%--   <c:set var="pageMaker" value="${pageMaker }" />	  	 --%>
    <div class="content-wrapper" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -42,7 +42,7 @@
     <section class="content">
 		<div class="card">
 			<div class="card-header with-border">
-				<button type="button" class="btn btn-primary" id="registBtn" onclick="OpenWindow('registForm.do','자료등록',600,400)">자료등록</button>
+				<button type="button" class="btn btn-primary" id="registBtn" onclick="OpenWindow('registForm.do','자료등록',900,1000)">자료등록</button>
 				<div id="keyword" class="card-tools" style="width:350px;">	
 					<div class="input-group row">
 					
@@ -73,19 +73,19 @@
 						<th>등록일</th>
 						<th style="width:10%;">조회수</th>
 					</tr>	
-					<c:if test="${empty dataMap.pdsList }" >
+					<c:if test="${empty pdsList }" >
 						<tr>
 							<td colspan="5">
 								<strong>해당 내용이 없습니다.</strong>
 							</td>
 						</tr>
 					</c:if>	
-					<c:forEach items="${dataMap.pdsList }" var="pds">
+					<c:forEach items="${pdsList }" var="pds">
 						<tr>
 							<td>${pds.pno }</td>
 							<td id="pdsTitle" style="text-align:left;max-width: 100%; 
 								overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-								<a href="javascript:OpenWindow('detail.do${pageMaker.makeQuery() }&pno=${pds.pno }','상세보기',600,400);">
+								<a href="javascript:OpenWindow('detail.do${pageMaker.makeQuery() }&pno=${pds.pno }','상세보기',900,1000);">
 									<span class="col-sm-12 ">${pds.title }</span>
 								</a>
 							</td>

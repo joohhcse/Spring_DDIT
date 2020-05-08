@@ -53,6 +53,9 @@
 	    	processData: false,
 	    	success: function(img_url) {
 	      		$(el).summernote('editor.insertImage', img_url);
+	    	},
+	    	error: function(error) {
+	    		alert("이미지 첨부에 실패했습니다");
 	    	}
 	  	});
 	}
@@ -72,6 +75,7 @@
 			url:"<%=request.getContextPath()%>/deleteImg.do",
 			data : JSON.stringify(fileData),
 			type:"post",
+			contentType : "application/json",
 			success:function(res){
 				console.log(res);
 			}
