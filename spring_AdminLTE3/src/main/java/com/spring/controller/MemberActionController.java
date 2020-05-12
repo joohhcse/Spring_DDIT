@@ -29,15 +29,17 @@ public class MemberActionController {
 	
 	@RequestMapping("list.do")
 	public String list(SearchCriteria cri, Model model) throws Exception {
-		String url = "member/list";
+		String url = "member/list.page";
 		
 		Map<String, Object> dataMap = memberService.getMemberList(cri);
+		
+		dataMap.put("title",  "회원리스트");
 		
 //		model.addAttribute("pageMaker", (PageMaker) dataMap.get("pageMaker"));
 //		model.addAttribute("memberList", (List<MemberVO>) dataMap.get("memberList"));
 		
 		model.addAllAttributes(dataMap);
-		
+		model.addAttribute("title", "테스트");
 		return url;
 	}
 	

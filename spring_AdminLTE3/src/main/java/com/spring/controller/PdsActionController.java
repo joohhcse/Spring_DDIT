@@ -40,7 +40,7 @@ public class PdsActionController {
 	
 	@RequestMapping("list.do")
 	public ModelAndView list(SearchCriteria cri, ModelAndView mnv) throws Exception {
-		String url = "pds/list";
+		String url = "pds/list.page";
 		
 		Map<String, Object> dataMap = pdsService.getList(cri);
 		
@@ -52,7 +52,7 @@ public class PdsActionController {
 	
 	@RequestMapping("registForm.do")
 	public ModelAndView registForm(ModelAndView mnv) throws Exception {
-		String url = "pds/regist";
+		String url = "pds/regist.open";
 
 		mnv.setViewName(url);
 		
@@ -86,7 +86,7 @@ public class PdsActionController {
 
 	@RequestMapping("modifyForm.do")
 	public ModelAndView modifyForm(ModelAndView mnv,int pno) throws Exception {
-		String url = "pds/modify";
+		String url = "pds/modify.open";
 		PdsVO pds = pdsService.getPds(pno);
 		mnv.addObject("pds", pds);
 		mnv.setViewName(url);
@@ -119,10 +119,36 @@ public class PdsActionController {
 		return url;
 	}
 	
+	@RequestMapping("remove.do")
+	public String remove(int pno, HttpServletRequest request) throws Exception {
+		String url = "pds/remove_success";
+		List<AttachVO> attachList = null;
+		try {
+			attachList = pdsService.getPds(pno).getAttachList();
+			if(attachList != null) {
+				for (AttachVO attach : attachList) {
+					String storedFilePath = attach.getUploadPath() + File.separator
+							+ attach.getFileName();
+					File file = new File(storedFilePath);
+					if (file.exists()) {
+						file.delete();
+					}
+				}
+			}
+			pdsService.remove(pno);
+			PageMaker pageMaker = CreatePageMaker.make(request);
+			request.setAttribute("pageMaker", pageMaker);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			url = "error/500";
+		}
+		return url;
+	}
 	
 	@RequestMapping("detail.do")
 	public ModelAndView detail(ModelAndView mnv, int pno) throws Exception {
-		String url = "pds/detail";
+		String url = "pds/detail.open";
 		PdsVO pds = pdsService.getPds(pno);
 		mnv.addObject("pds", pds);
 		mnv.setViewName(url);

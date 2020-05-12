@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -66,17 +67,17 @@ public class CommonActionController {
 	}
 	
 	@RequestMapping("logout.do")
-	public String logout(HttpServletRequest request) throws Exception {
-		String url="redirect:/commons/loginForm.do";
-		HttpSession session = request.getSession();
+	public String logout(HttpSession session, Model model) throws Exception {
+		String url="commons/logout";
 		session.invalidate();
-		
+		model.addAttribute("msg", "로그아웃 되었습니다.");
 		return url;
 	}
 	
 	@RequestMapping("loginForm.do")
-	public String loginForm() throws Exception {
+	public String loginForm(Model model) throws Exception {
 		String url="commons/loginForm";
+		model.addAttribute("title", "로그인");
 		
 		return url;
 	}

@@ -5,6 +5,6 @@
 
 <%@ include file="/WEB-INF/views/include/open_header.jsp" %>
 
-<decorator:body />
+<%-- <decorator:body /> --%>
 
 <%@ include file="/WEB-INF/views/include/open_footer.jsp" %>
