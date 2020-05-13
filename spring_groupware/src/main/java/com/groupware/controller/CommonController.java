@@ -34,6 +34,10 @@ public class CommonController {
 	public String mainGET(Model model, String mCode) throws Exception {
 
 		model.addAttribute("mCode", mCode);
+		
+		System.out.println("model >>> " + model);
+		System.out.println("mCode >>> " + mCode);
+		
 		return "main";
 	}
 	

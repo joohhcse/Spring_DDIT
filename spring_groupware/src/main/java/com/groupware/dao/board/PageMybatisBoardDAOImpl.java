@@ -28,8 +28,7 @@ public class PageMybatisBoardDAOImpl implements PageBoardDAO {
 		int limit=cri.getPerPageNum();		
 		RowBounds rowBounds=new RowBounds(offset,limit);		
 		
-		List<BoardVO> boardList=
-				session.selectList("Board-Mapper.selectSearchBoardList",cri,rowBounds);
+		List<BoardVO> boardList = session.selectList("Board-Mapper.selectSearchBoardList",cri,rowBounds);
 		
 		return boardList;
 	}

@@ -60,7 +60,6 @@
 <script>
 $(document).ready(function() {
 	
-	
 	var containerFixed = true;
     ace.settingFunction.main_container_fixed(null, containerFixed);
     
@@ -87,11 +86,7 @@ $(document).ready(function() {
    
     initHash(); //헤쉬링크 처리   
     
-   
-  
-  	
     var mCode='MENU00' 
-	
 	
 	//clock
     setClock("ko");	//언어설정 추가   
@@ -114,6 +109,7 @@ $(document).ready(function() {
 		     </c:if>
 		},
 		error:function(){
+			alert("로그인 하세요!");
 			location.href="<%=request.getContextPath()%>/commons/login";
 		}
 		
@@ -165,9 +161,3 @@ function autoBgChange() {
 
 
 
-
-
-
-
-
-    
