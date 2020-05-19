@@ -6,7 +6,6 @@ import java.util.List;
 import com.groupware.dto.PositionVO;
 
 public interface PositionDAO {
-
 	
 	List<PositionVO> selectPositionList()throws SQLException;
 	

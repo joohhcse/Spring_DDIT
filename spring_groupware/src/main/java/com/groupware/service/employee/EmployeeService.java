@@ -16,6 +16,9 @@ public interface EmployeeService {
 	void login(String id, String pwd)throws SQLException,
 											IdNotFoundException,
 											InvalidPasswordException;
+
+	// 로그인 체크
+	void checkId(String id) throws SQLException, IdNotFoundException;
 	
 	// 회원가입
 	void regist(EmployeeVO employee, List<CareerVO> careers)throws SQLException;

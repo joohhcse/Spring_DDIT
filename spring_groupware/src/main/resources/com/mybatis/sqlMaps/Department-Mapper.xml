@@ -5,7 +5,7 @@
 	<select id="selectDeptList" resultType='dept'>
 		select *
 		from department
-		order by dept_order asc		
+		order by dept_order asc
 	</select>
 </mapper>
 

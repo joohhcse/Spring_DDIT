@@ -43,6 +43,8 @@ public class BoardServiceImpl implements BoardService {
 		int replycnt = replyDAO.countReply(bno);
 		board.setReplycnt(replycnt);
 		boardDAO.increaseViewCnt(bno);
+		//System.out.println(1/0);
+		//if(true) throw new SQLException("테스트 예외 발생");
 		return board;
 	}
 

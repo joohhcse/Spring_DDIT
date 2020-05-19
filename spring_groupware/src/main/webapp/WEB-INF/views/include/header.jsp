@@ -15,7 +15,7 @@
 <meta charset="utf-8" />
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>대덕인재개발원 Groupware System</title>
+<title>DDIT Groupware System</title>
 
 <style type="text/css" id="fontFamilyStyleSheet">
 body { font-family: 'Open Sans', sans-serif !important; }

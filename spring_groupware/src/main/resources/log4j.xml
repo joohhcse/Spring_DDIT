@@ -25,9 +25,9 @@
 	 <!-- ResultSet을 제외한 모든 JDBC 호출 정보를 로그로 남긴다. 
 	 많은 양의 로그가 생성되므로 특별히 JDBC 문제를 추적해야 할 필요가 
 	 있는 경우를 제외하고는 사용을 권장하지 않는다. -->
-	<!-- <logger name="jdbc.audit">
+	<logger name="jdbc.audit">
 		<level value="info" />		
-	</logger> -->
+	</logger>
 	
 	 <!-- ResultSet을 포함한 모든 JDBC 호출 정보를 로그로 남기므로 
 	 매우 방대한 양의 로그가 생성된다. -->
@@ -46,9 +46,9 @@
 		<level value="info" />		
 	</logger>
 	<!-- 트랜젝션 관련 로그 출력 -->	 
-	<!-- <logger name="org.springframework.jdbc.datasource">
+	<logger name="org.springframework.jdbc.datasource">
 		<level value="debug" />		
-	</logger> -->	
+	</logger>	
 	
 	<!-- <logger name="jdbc.sqltiming" additivity="false">
 		<level value="warn" />		
@@ -68,9 +68,10 @@
 	<logger name="org.springframework.context">
 		<level value="info" />
 	</logger>
-	<!-- <logger name="org.springframework.jdbc">
+
+	<logger name="org.springframework.jdbc">
 		<level value="debug" />
-	</logger> -->
+	</logger>
 
 	<logger name="org.springframework.web">
 		<level value="info" />

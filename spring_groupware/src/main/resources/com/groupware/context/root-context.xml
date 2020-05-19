@@ -8,7 +8,9 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:property-placeholder location="classpath:com/groupware/properties/*.properties"/>
 	
+	<!-- 순서에 유의 : 스크립트라서 절차가 있다 -->
 	<import resource="classpath:com/groupware/context/dataSource-context.xml"/>	
 	<import resource="classpath:com/groupware/context/application-context.xml"/>	
-	
+	<import resource="classpath:com/groupware/context/aop-context.xml"/>	
+	<import resource="classpath:com/groupware/context/security-context.xml"/>	
 </beans>

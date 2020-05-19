@@ -13,6 +13,7 @@ import com.groupware.exception.IdNotFoundException;
 import com.groupware.exception.InvalidPasswordException;
 import com.groupware.request.PageMaker;
 import com.groupware.request.SearchCriteria;
+import com.groupware.utils.DataFormat;
 
 public class EmployeeServiceImpl implements EmployeeService{
 
@@ -40,14 +41,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 		if(!pwd.equals(employee.getPwd())) throw new InvalidPasswordException();
 		
 	}
+	
 	@Override
-	public void regist(EmployeeVO employee,List<CareerVO> careers) throws SQLException {
+	public void regist(EmployeeVO employee, List<CareerVO> careers) throws SQLException {
 		employeeDAO.insertEmployee(employee);
 		
 		for(CareerVO career:careers) {
 			careerDAO.insertCareer(career);
 		}
-		
 		
 	}
 	@Override
@@ -121,8 +122,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeDAO.updateRecentLoginTime(id);
 		
 	}
-	
-	
+
+	@Override
+	public void checkId(String id) throws SQLException, IdNotFoundException {
+		EmployeeVO employee = employeeDAO.selectEmployeeById(id);
+		
+		if(employee!=null) 
+			throw new IdNotFoundException();
+	}
 }
 
 
