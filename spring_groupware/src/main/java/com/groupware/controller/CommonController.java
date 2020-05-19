@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.groupware.dto.EmployeeVO;
 import com.groupware.dto.MenuVO;
+import com.groupware.service.employee.EmployeeService;
 import com.groupware.service.menu.MenuService;
 
 @Controller
@@ -29,6 +31,9 @@ public class CommonController {
 //	public void setMenuService(MenuService menuService) {
 //		this.menuService = menuService;
 //	}
+	
+	@Autowired
+	private EmployeeService employeeService;
 	
 	@RequestMapping(value = "/index.htm", method = RequestMethod.GET)
 	public String mainGET(Model model, String mCode) throws Exception {
@@ -69,6 +74,17 @@ public class CommonController {
 	
 	@RequestMapping("/commons/login")
 	public void loginForm() {}
+	
+	@RequestMapping(value = "/commons/userInfo", method = RequestMethod.GET)
+	public String getUserInfo(String id, Model model) throws Exception {
+		String url = "commons/employee_info";
+		
+		Map<String, Object> dataMap = employeeService.getEmployee(id);
+		
+		EmployeeVO employee = (EmployeeVO) dataMap.get("employee");
+		model.addAttribute("employee", employee);
+		return url;
+	}
 	
 
 }

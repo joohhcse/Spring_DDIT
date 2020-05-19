@@ -1,5 +1,7 @@
 package com.groupware.request;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -103,11 +105,23 @@ public class ModifyEmployeeRequest {
 	public Date getRegDate() {
 		return regDate;
 	}
-	
+
 	@DateTimeFormat(pattern="yyyy.MM.dd")
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	
+//	public void seteRegDate(String regDate) {
+//		Date date1 = null;
+//		try {
+//			date1 = new SimpleDateFormat("yyyy.MM.dd").parse(regDate);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		this.regDate = date1;
+//	}
+	
 	public String getPosi_no() {
 		return posi_no;
 	}

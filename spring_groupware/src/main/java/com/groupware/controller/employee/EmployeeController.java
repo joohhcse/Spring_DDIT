@@ -89,7 +89,8 @@ public class EmployeeController {
 		EmployeeVO employee = empReq.toEmployeeVO();
 		List<CareerVO> careers = new ArrayList<CareerVO>();
 		
-		if(careers != null) {
+//		if(careers != null) {
+		if(careers != null && empReq.getCareers() != null) {
 			for(CareerVO career : empReq.getCareers()) {
 				career.setId(employee.getId());
 				careers.add(career);
