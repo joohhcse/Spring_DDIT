@@ -117,6 +117,7 @@ public class BoardActionController {
 //		
 //		return url;
 //	}
+	
 	@RequestMapping(value="modify.do",method=RequestMethod.POST)
 	public String modifyPost(ModifyBoardRequest modifyReq,
 							 SearchCriteria cri)throws Exception{

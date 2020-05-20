@@ -10,7 +10,6 @@ public class MemberVO {
 	private String authority; // 권한
 	private int enabled;   // 사용여부
 	
-	
 	public MemberVO() {}
 	
 	public MemberVO(String id, String pwd, String name, String phone, String email, String picture, String authority,

@@ -3,13 +3,12 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <script>
-$('input#inputFile').on('change',function(event){
+$('input#inputFile').on('change',function(event) {
 	$('input[name="checkUpload"]').val(0);
 	
-	var fileFormat=
-		this.value.substr(this .value.lastIndexOf(".")+1).toUpperCase();
+	var fileFormat = this.value.substr(this.value.lastIndexOf(".")+1).toUpperCase();
 	//이미지 확장자 jpg 확인
-	if(fileFormat!="JPG"){
+	if(fileFormat!="JPG") {
 		alert("이미지는 jpg 형식만 가능합니다.");
 		return;
 	} 
@@ -19,7 +18,6 @@ $('input#inputFile').on('change',function(event){
 		return;
 	};
 	
-	
 	document.getElementById('inputFileName').value=this.files[0].name;
 	
 	if (this.files && this.files[0]) {
@@ -28,8 +26,7 @@ $('input#inputFile').on('change',function(event){
         
         reader.onload = function (e) {
         	//이미지 미리보기	        	
-        	$('div#pictureView')
-        	.css({'background-image':'url('+e.target.result+')',
+        	$('div#pictureView').css({'background-image':'url('+e.target.result+')',
 				  'background-position':'center',
 				  'background-size':'cover',
 				  'background-repeat':'no-repeat'

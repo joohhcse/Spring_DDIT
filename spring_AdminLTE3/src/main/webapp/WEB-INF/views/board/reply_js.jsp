@@ -31,8 +31,6 @@ Handlebars.registerHelper("prettifyDate",function(timeValue){
 	return year+"/"+month+"/"+date;
 });
 
-
-
 var replyPage=1;
 
 getPage("<%=request.getContextPath()%>/replies/list.do?bno=${board.bno}&page="+replyPage);
@@ -197,7 +195,7 @@ $('#replyDelBtn').on('click',function(event){
 		data:JSON.stringify(sendData),
 		contentType:"application/json", //보내는 data 형식 지정
 		dataType:"text", //받는 data 형식 지정
-		success:function(data){
+		success:function(page){
 			alert("삭제되었습니다.");
 			getPage("<%=request.getContextPath()%>/replies/list.do?bno=${board.bno}&page="+page);				
 		},
