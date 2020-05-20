@@ -17,8 +17,10 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 										AuthenticationException exception) throws IOException, ServletException {
 		
 //		request.setAttribute("msg", exception.getMessage());
-		request.setAttribute("msg", "아이디 혹은 패스워드가 일치하지 않습니다.");
+//		request.setAttribute("msg", "아이디 혹은 패스워드가 일치하지 않습니다.");
+//		request.setAttribute("msg", "onAuthenticationFailure");
 		super.onAuthenticationFailure(request, response, exception);
+		
 	}
 
 	

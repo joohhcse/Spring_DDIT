@@ -10,7 +10,7 @@
 
 	<!-- 인증 : authentication -->
 	<authentication-manager>
-		<authentication-provider>
+<!-- 	<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select id as username,pwd as password,enabled
 										 from employee
@@ -19,7 +19,8 @@
 				                               from employee
 				                               where id=?"			
 			/>
-		</authentication-provider>	
+		</authentication-provider> -->	
+		<authentication-provider ref="authenticator" />
 	</authentication-manager>
 	
 
@@ -52,8 +53,28 @@
 			logout-url="/commons/logout"
 			invalidate-session="true"
 			delete-cookies="JSESSIONID"
+			success-handler-ref="logoutSuccessHandler"
 		/>
+		
+		<session-management invalid-session-url="/commons/loginTimeOut">
+			<concurrency-control 
+				expired-url="/commons/loginExpired"
+				max-sessions="1"
+				session-registry-ref="sessionRegistry"
+			/>
+		</session-management>
+		
 	</http>
+
+
+	<beans:bean id="sessionRegistry" 
+				class="org.springframework.security.core.session.SessionRegistryImpl" 
+	/>
+
+	<beans:bean id="authenticator" 
+				class="com.groupware.security.CustomAuthentication" 
+				p:employeeDAO-ref="employeeDAO"
+	/>
 	
 	<beans:bean id="loginSuccessHandler"
 				class="com.groupware.security.LoginSuccessHandler"
@@ -65,4 +86,10 @@
 				p:defaultFailureUrl="/commons/login"
 				p:useForward="true"
 				/>
+
+	<beans:bean id="logoutSuccessHandler"
+				class="com.groupware.security.CustomLogoutSuccessHandler"
+				p:employeeService-ref="employeeService"
+				/>
+
 </beans:beans>

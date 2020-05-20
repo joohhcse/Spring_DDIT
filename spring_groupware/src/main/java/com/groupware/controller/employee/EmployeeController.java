@@ -171,7 +171,7 @@ public class EmployeeController {
 		
 		try {
 			employeeService.login(id, "");
-		}catch(IdNotFoundException e) { //아이디가 없음.
+		}catch(IdNotFoundException e) { 	//아이디가 없음.
 			result.put("result", true);
 		}catch(InvalidPasswordException e) { //아이디가 존재
 			result.put("result", false);			

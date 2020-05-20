@@ -40,7 +40,7 @@
 	/* 직원번호생성  */
 	function createEmpNumber(dept){
 		//alert(new Date().format("yy-MM-dd"));
-		$.getJSON("deptEmpCount?dept_no="+dept.val(),function(data){
+		$.getJSON("deptEmpCount?dept_no="+dept.val(), function(data){
 			var eno = new Date().format("yyMMdd")+dept.val();  			
 			var temp="000"+(data+1);
 			eno+=temp.substr(temp.length-3);
@@ -80,8 +80,7 @@
 	$('input[name="picture"]').on('change',function(){
 		$('input[name="checkUpload"]').val(0);
 		
-		var fileFormat=
-			this.value.substr(this.value.lastIndexOf(".")+1).toUpperCase();
+		var fileFormat = this.value.substr(this.value.lastIndexOf(".")+1).toUpperCase();
 		//이미지 확장자 jpg 확인
 		if(fileFormat!="JPG" && fileFormat!="JPEG"){
 			alert("이미지는 jpg 형식만 가능합니다.");

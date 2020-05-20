@@ -106,7 +106,7 @@ public class ModifyEmployeeRequest {
 		return regDate;
 	}
 
-	@DateTimeFormat(pattern="yyyy.MM.dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
