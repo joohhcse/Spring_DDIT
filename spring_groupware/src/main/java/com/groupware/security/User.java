@@ -12,7 +12,6 @@ public class User implements UserDetails{
 	
 	public User() {}
 	public User(EmployeeVO member) {
-		super();
 		this.member = member;
 	}
 	

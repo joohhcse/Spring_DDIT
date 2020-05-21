@@ -20,6 +20,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,12 +42,14 @@ import com.groupware.exception.InvalidPasswordException;
 import com.groupware.request.ModifyEmployeeRequest;
 import com.groupware.request.RegistEmployeeRequest;
 import com.groupware.request.SearchCriteria;
+import com.groupware.security.CustomAuthentication;
+import com.groupware.security.User;
 import com.groupware.service.employee.DepartmentService;
 import com.groupware.service.employee.EmployeeService;
 import com.groupware.service.employee.PositionService;
 
 @Controller
-@RequestMapping("/employee/")
+@RequestMapping("/employee")
 public class EmployeeController {
 	
 	@Autowired
@@ -102,7 +109,8 @@ public class EmployeeController {
 									empReq.getGraduDoc(), empReq.getScoreDoc() };
 		List<String> saveFileName = new ArrayList<String>();
 		for(MultipartFile file : files) {
-			if (file==null) continue;
+			if (file == null) 
+				continue;
 			String fileName = UUID.randomUUID().toString().replace("-", "") + "$$" + file.getOriginalFilename();
 			File savePath = new File(employeeAttachPath + File.separator + employee.getId());
 			if (!savePath.exists()) {
@@ -244,7 +252,10 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
-	public String modifyPOST(ModifyEmployeeRequest modifyReq, HttpSession session, Model model) throws Exception{
+	public String modifyPOST(ModifyEmployeeRequest modifyReq,
+							 HttpSession session,
+							 Authentication auth,
+							 Model model) throws Exception{
 		String url="employee/modify_ok";
 
 		EmployeeVO employee = modifyReq.toEmployeeVO();
@@ -260,10 +271,36 @@ public class EmployeeController {
 		
 		EmployeeVO loginUser = (EmployeeVO)session.getAttribute("loginUser");
 		
-		if(loginUser != null && loginUser.getId().equals(employee.getId())) {		
-			loginUser = (EmployeeVO)employeeService.getEmployee(employee.getId()).get("employee");			
-			session.setAttribute("loginUser", loginUser);
+//		if(loginUser != null && loginUser.getId().equals(employee.getId())) {		
+//			loginUser = (EmployeeVO)employeeService.getEmployee(employee.getId()).get("employee");			
+//			session.setAttribute("loginUser", loginUser);
+//		}
+		
+//		 로그인 한 사용자의 권한을 동적으로 업데이트해야 할 경우 (물론 변경된 경우) 로그 아웃하고 로그인 할 필요없이 
+//		   Spring SecurityContextHolder의 Authentication 객체 (보안 토큰)를 재설정하면 됩니다.
+		if(auth.getName().equals(employee.getId())) {			
+			// 변경된 로그인 사용자 정보를 가져온다.
+			EmployeeVO updateEmployee = (EmployeeVO)employeeService.getEmployee(auth.getName()).get("employee");
+			
+			// 권한을 갱신한다.
+			List<GrantedAuthority> updatedAuthorities = new ArrayList<GrantedAuthority>();
+			updatedAuthorities.add(new SimpleGrantedAuthority(updateEmployee.getAuthority()));
+			
+			// 새로운 Authentication을 생성.
+			UsernamePasswordAuthenticationToken newAuth = 
+				new UsernamePasswordAuthenticationToken(auth.getPrincipal(), auth.getCredentials(), updatedAuthorities);
+						
+			//SecurityContextHolder으로 새로 생성한 authentication 을 setting
+			SecurityContextHolder.getContext().setAuthentication(newAuth);
+			
+			// security의 userDetail을 갱신하기위한 User 생성.
+			User secLoginUser = new User(updateEmployee);
+			
+			//authentication detail과 session attribute를 교체한다.
+			newAuth.setDetails(secLoginUser);
+			session.setAttribute("loginUser", updateEmployee);
 		}
+		
 		model.addAttribute("employee", employee);
 		
 		return url;				

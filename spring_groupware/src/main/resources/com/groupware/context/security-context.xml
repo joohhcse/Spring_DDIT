@@ -28,13 +28,13 @@
 	<!-- 인허가  : authorization-->
 	<http use-expressions="true" pattern="/**">
 		<access-denied-handler error-page="/security/accessDenied"/>
-		<intercept-url pattern="/commons/**" access="permitAll"/>
+		<intercept-url pattern="/commons**/**" access="permitAll"/>		
 		
 		<!-- 더 세부적인 범위가 코드가 위로 간다 -->
 		<!-- 일반유저의 등록도 가능-->
-		<intercept-url pattern="/board/free/regist*" access="hasRole('ROLE_USER')"/>
-		
-		<intercept-url pattern="/**/regist*" access="hasAnyRole('ROLE_ADMIN,ROLE_SUPER,ROLE_VIP,ROLE_VVIP')"/>
+		<intercept-url pattern="/board/regist*" access="hasRole('ROLE_USER,ROLE_ADMIN,ROLE_SUPER,ROLE_VIP,ROLE_VVIP')"/>
+
+		<intercept-url pattern="/**/regist*" access="hasAnyRole('ROLE_USER,ROLE_ADMIN,ROLE_SUPER,ROLE_VIP,ROLE_VVIP')"/>
 		<intercept-url pattern="/**/modify*" access="hasAnyRole('ROLE_ADMIN,ROLE_SUPER,ROLE_VIP,ROLE_VVIP')"/>
 		<intercept-url pattern="/**/remove*" access="hasAnyRole('ROLE_ADMIN,ROLE_SUPER,ROLE_VIP,ROLE_VVIP')"/>			
 		<intercept-url pattern="/**" access="isAuthenticated()"/>
@@ -44,9 +44,9 @@
 			login-processing-url="/commons/loginPost"
 			username-parameter="id"
 			password-parameter="pwd"
-			 default-target-url="/"		
+			default-target-url="/"		
 			authentication-success-handler-ref="loginSuccessHandler"
-			 authentication-failure-handler-ref="loginFailureHandler"
+			authentication-failure-handler-ref="loginFailureHandler"
 		/>
 		
 		<logout
@@ -63,9 +63,7 @@
 				session-registry-ref="sessionRegistry"
 			/>
 		</session-management>
-		
 	</http>
-
 
 	<beans:bean id="sessionRegistry" 
 				class="org.springframework.security.core.session.SessionRegistryImpl" 
@@ -78,7 +76,6 @@
 	
 	<beans:bean id="loginSuccessHandler"
 				class="com.groupware.security.LoginSuccessHandler"
-				p:defaultTargetUrl="/index.htm"				
 				/>
 
 	<beans:bean id="loginFailureHandler"
