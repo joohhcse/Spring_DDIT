@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee_list" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fab1e896-e8c1-4a0a-bde1-cea27a54f672">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ORACLE"/>
+	<parameter name="query" class="java.lang.String">
+		<defaultValueExpression><![CDATA["select * from employee"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[$P!{query}]]>
+	</queryString>
+	<field name="ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="ENO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ENO"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="ADDRESS1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ADDRESS1"/>
+	</field>
+	<field name="ADDRESS2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ADDRESS2"/>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
+	</field>
+	<field name="ENABLED" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ENABLED"/>
+	</field>
+	<field name="PHONE_C" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PHONE_C"/>
+	</field>
+	<field name="PICTURE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PICTURE"/>
+	</field>
+	<field name="REGDATE" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="REGDATE"/>
+	</field>
+	<field name="POSITION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="POSITION"/>
+	</field>
+	<field name="AUTHORITY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="AUTHORITY"/>
+	</field>
+	<field name="DEPTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DEPTNAME"/>
+	</field>
+	<field name="REMARK" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="REMARK"/>
+	</field>
+	<field name="REGISTER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="REGISTER"/>
+	</field>
+	<field name="SSN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SSN"/>
+	</field>
+	<field name="POSTCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="POSTCODE"/>
+	</field>
+	<field name="LICENSEDOC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LICENSEDOC"/>
+	</field>
+	<field name="GRADUDOC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="GRADUDOC"/>
+	</field>
+	<field name="SCOREDOC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SCOREDOC"/>
+	</field>
+	<field name="DEPT_NO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DEPT_NO"/>
+	</field>
+	<field name="POSI_NO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="POSI_NO"/>
+	</field>
+	<field name="RECENTLOGINTIME" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="RECENTLOGINTIME"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="2d215e62-4245-41f1-a116-a8b7e34abe88"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="789662c7-858a-442e-a550-e235eb0b4f18"/>
+					<textElement>
+						<font fontName="맑은 고딕" size="32" isBold="true" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[직원 리스트]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="e6f88f26-d199-4490-b9a1-78af36aa77aa"/>
+					<textElement textAlignment="Right">
+						<font fontName="맑은 고딕" size="14" isBold="false" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[대덕인재개발원]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="b4110c39-0fdb-471c-92ce-4be0f48a9bd7"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="88" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="32d6db84-6808-4017-a9fd-f24aa55d7cc2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af63b2f2-4e94-401e-8cca-dfe2aefedc04"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" isBold="true" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[아이디]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="89" y="0" width="91" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6956a52e-486c-4754-baaf-54d331a61d66">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2bc8801-4e30-4744-ac8d-e9f1fe0d517e"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" isBold="true" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[사원번호]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="180" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e450c963-1492-4aa9-b828-74b5e3e9b86f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c87d19a6-8af3-4833-b27a-b6dbc5e25491"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" isBold="true" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[이 름]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="272" y="0" width="96" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c70b4e9f-afe3-47cd-be8b-55d03efc7a67">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92586732-54f4-45c0-8ca2-d025c4d7e9ee"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" isBold="true" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[입사일]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="369" y="0" width="70" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a2018886-6f28-40ae-a4be-e8b6e2353dd0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="508c191d-68d0-4f05-9833-759f2af4ee4f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" isBold="true" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[직 위]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="0" width="114" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d06bfc72-d597-4cb8-bcad-5c815a6c74d8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="29086021-135d-41f7-afba-910cc9034e51"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" isBold="true" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[부 서]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="87" height="44" uuid="35783ae7-9c8d-4f65-b75c-ff710b3bd05e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af63b2f2-4e94-401e-8cca-dfe2aefedc04"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="89" y="0" width="91" height="44" uuid="95cfe8cf-b726-4acb-bf13-8082a47c6278">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2bc8801-4e30-4744-ac8d-e9f1fe0d517e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="180" y="0" width="92" height="44" uuid="2504c574-b53c-4b51-a031-8ea64477926d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c87d19a6-8af3-4833-b27a-b6dbc5e25491"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="369" y="0" width="70" height="44" uuid="40608414-fae9-46eb-b22a-4be1b4253645">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="508c191d-68d0-4f05-9833-759f2af4ee4f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{POSITION} == null ? "N/A":$F{POSITION}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="440" y="0" width="114" height="44" uuid="5b5de9a7-523a-4516-8f4e-45b55ccbc2d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="29086021-135d-41f7-afba-910cc9034e51"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DEPTNAME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="272" y="0" width="96" height="44" uuid="158a3d96-e607-4707-b48f-82183d694449">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92586732-54f4-45c0-8ca2-d025c4d7e9ee"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/MALGUN.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("yyyy-MM-dd").format($F{REGDATE})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="45663933-a7fc-4b73-a76b-41c0946cb444"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="129ce76d-bd6a-483a-86f1-9caf2f2c0a30"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="437ef10f-9bd5-4fd8-9325-3d409723f3a2"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-10" y="0" width="555" height="1" uuid="c6504a2b-0cc9-447e-a361-4f5cbb84d9ab"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -361,6 +361,12 @@ public class EmployeeController {
 		return entity;
 	}
 	
+	@RequestMapping(value="/download/list/{type}",method=RequestMethod.GET)
+	public String downloadList(@ModelAttribute("cri") SearchCriteria cri,
+							  @PathVariable("type")String type,
+							  Model model) throws Exception {
+		model.addAttribute("type",type);
 		
-
+		return "employeeReportView";
+	}
 }

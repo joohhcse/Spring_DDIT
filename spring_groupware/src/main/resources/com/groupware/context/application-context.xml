@@ -110,4 +110,8 @@
 	      p:noticeAttachDAO-ref="noticeAttachDAO"
 	      />  	      	      	      
 
+	<bean id="employeeReportView"
+		  class="com.groupware.bean.view.EmployeeListReportView"
+		  p:dataSource-ref="dataSource"
+		  />          
 </beans>

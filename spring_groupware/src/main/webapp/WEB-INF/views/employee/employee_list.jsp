@@ -60,6 +60,11 @@
 								<input id="searchValue" name="keyword" style="width:100px; margin-left:5px; border-radius: 0px !important;" placeholder="Search for ..." class="form-control" type="text" value="${pageMaker.cri.keyword }">
 								<span id="gridSearch" class="input-group-btn" style="display: inline;">
 									<button type="button" id="searchBtn" class="btn btn-sm btn-white">검색</button>
+									<button type="button" id="searchBtnPDF" class="btn btn-sm btn-white"
+									 onclick="convert_list_go('pdf');">PDF</button>
+									<button type="button" id="searchBtnExcel" class="btn btn-sm btn-white"
+									 onclick="convert_list_go('xls');"
+									>Excel</button>
 								</span>
 							</div>
 							<span id="gridSearchReset" style="display:none;">
@@ -217,9 +222,24 @@
 </div>
 <%-- <%@ include file="/WEB-INF/views/board/list_js.jsp" %> --%>
 
+<%@ include file="/WEB-INF/views/board/list_js.jsp" %>
 
-
-
-
-
+<script>
+	function convert_list_go(type){
+		//alert("pdf click");
+		var form = $('form#search');
+		
+		var searchType=$('select#searchType');
+		if(searchType.val()==""){
+			alert("검색구분을 선택하세요.");
+			searchType.focus();
+			return;
+		}
+		form.attr("action","download/list/"+type);
+		form.attr("method","get");
+		form.submit();
+	}
+	
+	
+</script>
 

@@ -31,6 +31,8 @@
 		<commons.fileupload-version>1.3.1</commons.fileupload-version>
 		<log4jdbc.remix-version>0.2.7</log4jdbc.remix-version>
 		<aspectjweaver-version>1.9.2</aspectjweaver-version>
+		<jasperreports-version>6.5.0</jasperreports-version>
+		<apache.poi-version>3.17</apache.poi-version>
 		
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
@@ -146,6 +148,22 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasperreports-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-databind</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${apache.poi-version}</version>
 		</dependency>
 
 		<!-- Logging -->
